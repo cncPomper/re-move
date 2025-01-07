@@ -96,7 +96,7 @@ class LSRTrainer(BaseTrainer):
         """
         # creating and loading the learned parameters of the MOVE model
         # this model stands as our base model
-        self.model = MOVEModel(emb_size=16000, sum_method=4, final_activation=3)
+        self.model = MOVEModel(emb_size=self.cfg['emb_size'], sum_method=4, final_activation=3)
         self.model.load_state_dict(torch.load(os.path.join(self.cfg['main_path'],
                                                            'saved_models/model_move.pt'),
                                               map_location='cpu'))

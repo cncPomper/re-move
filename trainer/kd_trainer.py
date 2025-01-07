@@ -108,7 +108,7 @@ class KDTrainer(BaseTrainer):
         # creating the teacher model and sending it to the proper device
         # this step is for the distance-based KD training
         if self.cfg['kd_loss'] == 'distance':
-            self.teacher = MOVEModel(emb_size=16000, sum_method=4, final_activation=3)
+            self.teacher = MOVEModel(emb_size=self.cfg['emb_size'], sum_method=4, final_activation=3)
             self.teacher.load_state_dict(torch.load(os.path.join(self.cfg['main_path'],
                                                                  'saved_models/model_move.pt'),
                                                     map_location='cpu'))
